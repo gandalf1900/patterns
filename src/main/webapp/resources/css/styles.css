@@ -1,0 +1,25 @@
+
+h1 {
+    font-size: 34px;
+}
+
+body {
+    background-color: darkgrey;
+}
+
+.background
+{
+    background-color:#ff1900;
+}
+
+.errorMsg {
+    background-color: #D97C7C;
+    color: #A30000;
+    display: block;
+    padding: 5px;
+}
+
+.ui-growl {
+    right: 20px;
+    top: 25%;
+}
