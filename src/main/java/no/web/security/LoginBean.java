@@ -1,14 +1,17 @@
 package no.web.security;
 
+import javax.faces.bean.ManagedBean;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.faces.event.ActionEvent;
 
-@Stateless
-@Named
+import static no.web.no.web.beans.BeanUtil.addMessage;
+
+@ManagedBean
 public class LoginBean {
     private String username;
     private String password;
@@ -29,7 +32,8 @@ public class LoginBean {
         this.password = password;
     }
 
-    public String login () {
+    public void login (ActionEvent actionEvent) {
+        System.out.println("************ LOGIN");
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest)
                 context.getExternalContext().getRequest();
@@ -38,9 +42,9 @@ public class LoginBean {
         } catch (ServletException e) {
 
             context.addMessage(null, new FacesMessage("Login failed."));
-            return "error";
+            return;
         }
-        return "admin/index";
+        addMessage("Login success");
     }
 
     public void logout() {
@@ -53,4 +57,6 @@ public class LoginBean {
             context.addMessage(null, new FacesMessage("Logout failed."));
         }
     }
+
+
 }
