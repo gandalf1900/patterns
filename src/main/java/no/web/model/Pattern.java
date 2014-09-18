@@ -26,4 +26,28 @@ public class Pattern {
     @Column
     private String type;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAlternativeName() {
+        return alternativeName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public String getType() {
+        return type;
+    }
+
 }
