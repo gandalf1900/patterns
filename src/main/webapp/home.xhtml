@@ -6,18 +6,45 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="templates/pageTemplate.xhtml">
-
-
     <ui:define name="main">
 
-        <p:dialog id="addPattternDialog" header="Modal Dialog" widgetVar="addPattternDialog" modal="true" height="100">
-            <h:outputText value="" />
-        </p:dialog>
+        <h:form>
+            <p:dialog id="addPattternDialog" header="" widgetVar="addPattternDialog" modal="true" height="300" width="400">
+                <h:panelGrid columns="1">
+
+                    <p:inputText id="name" required="true"
+                                 size="40" value="#{patternBean.name}" />
+                    <p:watermark for="name" value="name" />
+
+                    <p:inputText id="alternativeName" required="true"
+                                 size="40" value="#{patternBean.alternativeName}" />
+                    <p:watermark for="alternativeName" value="alternativeName" />
+
+                    <p:inputText id="description" required="true"
+                                 size="40" value="#{patternBean.description}" />
+                    <p:watermark for="description" value="description" />
+
+                    <p:inputText id="longDescription" required="true"
+                                 size="40" value="#{patternBean.longDescription}" />
+                    <p:watermark for="longDescription" value="longDescription" />
+
+                    <p:selectOneMenu value="#{patternBean.type}" effect="drop">
+                        <f:selectItem itemLabel="Type" itemValue="" />
+                        <f:selectItem itemLabel="behavioral" itemValue="behavioral" />
+                        <f:selectItem itemLabel="creational" itemValue="creational" />
+                        <f:selectItem itemLabel="structural" itemValue="structural" />
+                    </p:selectOneMenu>
+
+                    <p></p>
+                </h:panelGrid>
+                <p></p>
+                <p:commandButton value="save" actionListener="#{patternBean.addPattern}" onclick="PF('addPattternDialog').hide();"/>
+            </p:dialog>
+        </h:form>
+
 
         <h:panelGrid columns="1" cellpadding="5">
-
             <p:commandButton value="Add pattern" type="button" onclick="PF('addPattternDialog').show();" />
-
         </h:panelGrid>
 
 
@@ -32,7 +59,6 @@
             </p:column>
 
         </p:dataTable>
-
 
     </ui:define>
 </ui:composition>
